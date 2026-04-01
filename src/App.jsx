@@ -1,60 +1,84 @@
 import { useEffect, useState } from "react";
 import { supabase } from "./utils/supabase";
+import NoteCard from "./components/NoteCard";
+import "./App.css";
 
 function App() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-
-  const [saved_notes, setSavedNotes] = useState([]);
+  const [savedNotes, setSavedNotes] = useState([]);
 
   useEffect(() => {
     async function getNotes() {
-      const { data: notes } = await supabase.from("notes").select();
-
-      if (notes) {
-        setSavedNotes(notes);
-      }
+      const { data, error } = await supabase.from("notes").select();
+      if (!error && data) setSavedNotes(data);
     }
-
     getNotes();
   }, []);
-  return (
-    <>
-      <div>
-        <h1>Welcome to Notesphere</h1>
-        <h2>Created By Matrix mind</h2>
-        <form>
-          <label>Title:</label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Enter the title"
-          />
-          <br />
-          <label>Content:</label>
-          <textarea
-            type="text"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            placeholder="Write the content"
-            cols={50}
-            rows={20}
-          ></textarea>
-        </form>
-      </div>
 
-      <div>
-        <ul>
-          {saved_notes.map((note) => (
-            <ul>
-              <li key={note.id}>{note.title}</li>
-              <li key={note.id}>{note.content}</li>
-            </ul>
-          ))}
-        </ul>
-      </div>
-    </>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!title && !content) return;
+    const { data, error } = await supabase
+      .from("notes")
+      .insert([{ title, content }])
+      .select();
+    if (!error && data) {
+      setSavedNotes((prev) => [...prev, ...data]);
+      setTitle("");
+      setContent("");
+    }
+  };
+
+  return (
+    <div className="app-shell">
+      <header className="app-header">
+        <h1 className="app-title">Notesphere</h1>
+        <span className="app-byline">by Matrix Mind</span>
+        <button className="submit-btn">Light Mode</button>
+      </header>
+
+      {/* Editor pane — future: swap form for <NoteEditor /> */}
+      <section className="editor-pane">
+        <span className="pane-label">New Note</span>
+        <form className="note-form" onSubmit={handleSubmit}>
+          <div className="field-group">
+            <label className="field-label" htmlFor="note-title">
+              Title
+            </label>
+            <input
+              id="note-title"
+              className="input-field"
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Give your note a name…"
+            />
+          </div>
+          <div className="field-group">
+            <label className="field-label" htmlFor="note-content">
+              Content
+            </label>
+            <textarea
+              id="note-content"
+              className="textarea-field"
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              placeholder="Start writing…"
+            />
+          </div>
+          <button className="submit-btn" type="submit">
+            Save note
+          </button>
+        </form>
+      </section>
+
+      {/* Notes pane — future: swap for <NoteList /> or <KanbanBoard /> */}
+      <section className="notes-pane">
+        <span className="pane-label">Saved Notes</span>
+        <NoteCard savedNotes={savedNotes} />
+      </section>
+    </div>
   );
 }
 
