@@ -1,0 +1,80 @@
+/* ── Google Fonts import ── */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Inter:wght@400;500&display=swap');
+
+/* ── Design tokens (from DESIGN.md) ── */
+:root {
+  --surface:                #f8fafa;
+  --surface-container-low:  #f0f4f4;
+  --surface-container-lowest: #ffffff;
+  --on-surface:             #2d3435;
+  --on-surface-muted:       #4a5556;
+  --primary:                #006b64;
+  --radius-lg:              2rem;
+  --spacing-4:              1rem;
+  --spacing-6:              1.5rem;
+  --whisper-shadow: 0 20px 40px rgba(45, 52, 53, 0.06);
+}
+
+/* ── List wrapper ── */
+.note-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);       /* breathing room, no dividers */
+}
+
+/* ── Card ── */
+.note-card {
+  background: var(--surface-container-lowest);
+  border-radius: var(--radius-lg);              /* 2rem — smooth aesthetic */
+  padding: 1.75rem var(--spacing-6);
+  box-shadow: var(--whisper-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+/* Alternate tonal background every other card — no dividers */
+.note-card:nth-child(even) {
+  background: var(--surface-container-low);
+}
+
+.note-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 28px 52px rgba(45, 52, 53, 0.10);
+}
+
+/* ── Typography ── */
+
+/* Eyebrow label — Inter, all caps, tracked (contrast rule) */
+.note-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;        /* +5% tracking */
+  text-transform: uppercase;
+  color: var(--primary);
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+/* Title — Manrope display, negative tracking */
+.note-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;       /* editorial tightness */
+  color: var(--on-surface);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Body — Inter, comfortable line-height */
+.note-content {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;               /* body-lg */
+  line-height: 1.65;
+  color: var(--on-surface-muted);
+  margin: 0;
+}
