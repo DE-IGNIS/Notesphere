@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./styling/NoteCard.css";
 
 function NoteCard({ savedNotes }) {
@@ -5,8 +6,10 @@ function NoteCard({ savedNotes }) {
     <ul className="note-list">
       {savedNotes.map((note) => (
         <li key={note.id} className="note-card">
-          <strong className="note-title">{note.title}</strong>
-          <p className="note-content">{note.content}</p>
+          <Link to={`/note/${note.id}`}>
+            <strong className="note-title">{note.title}</strong>
+            <p className="note-content">{note.content}</p>
+          </Link>
         </li>
       ))}
     </ul>
