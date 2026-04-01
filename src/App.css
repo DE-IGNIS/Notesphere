@@ -1,27 +1,33 @@
 /* App.css */
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Inter:wght@400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Inter:wght@400;500&display=swap");
 
 /* ── Tokens ── */
 :root {
-  --surface:              #f8fafa;
-  --surface-low:          #f0f4f4;
-  --surface-lowest:       #ffffff;
-  --on-surface:           #2d3435;
-  --on-surface-muted:     #5a6465;
-  --primary:              #006b64;
-  --primary-container:    #7fe6db;
-  --radius-full:          9999px;
-  --radius-lg:            2rem;
-  --radius-md:            1rem;
-  --whisper-shadow:       0 20px 40px rgba(45, 52, 53, 0.06);
-  --whisper-shadow-hover: 0 28px 52px rgba(45, 52, 53, 0.10);
+  --surface: #f8fafa;
+  --surface-low: #f0f4f4;
+  --surface-lowest: #ffffff;
+  --on-surface: #2d3435;
+  --on-surface-muted: #5a6465;
+  --primary: #006b64;
+  --primary-container: #7fe6db;
+  --radius-full: 9999px;
+  --radius-lg: 2rem;
+  --radius-md: 1rem;
+  --whisper-shadow: 0 20px 40px rgba(45, 52, 53, 0.06);
+  --whisper-shadow-hover: 0 28px 52px rgba(45, 52, 53, 0.1);
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   background: var(--surface);
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   color: var(--on-surface);
   min-height: 100vh;
 }
@@ -44,7 +50,7 @@ body {
 }
 
 .app-title {
-  font-family: 'Manrope', sans-serif;
+  font-family: "Manrope", sans-serif;
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -54,7 +60,7 @@ body {
 /* Eyebrow / byline — Inter all-caps contrast rule */
 .app-byline,
 .pane-label {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
   letter-spacing: 0.05em;
@@ -101,7 +107,7 @@ body {
 /* ── Input & Textarea — minimalist inset ── */
 .input-field,
 .textarea-field {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 1rem;
   color: var(--on-surface);
   background: var(--surface-lowest);
@@ -110,7 +116,9 @@ body {
   padding: 0.85rem 1.25rem;
   border-radius: var(--radius-md);
   box-shadow: var(--whisper-shadow);
-  transition: background 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .textarea-field {
@@ -122,7 +130,9 @@ body {
 }
 
 .input-field::placeholder,
-.textarea-field::placeholder { color: #a8b4b5; }
+.textarea-field::placeholder {
+  color: #a8b4b5;
+}
 
 /* Focused state — ghost primary border at 20% opacity */
 .input-field:focus,
@@ -136,20 +146,36 @@ body {
 /* ── Primary CTA — gradient pill ── */
 .submit-btn {
   align-self: flex-start;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
   color: #ffffff;
-  background: linear-gradient(135deg, var(--primary), var(--primary-container) 200%);
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary-container) 200%
+  );
   border: none;
   border-radius: var(--radius-full);
-  padding: 0.75rem 2rem;     /* spacing-3 / spacing-6 */
+  padding: 0.75rem 2rem; /* spacing-3 / spacing-6 */
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   box-shadow: 0 8px 24px rgba(0, 107, 100, 0.18);
 }
 
 .submit-btn:hover {
   transform: scale(1.02);
   box-shadow: 0 12px 32px rgba(0, 107, 100, 0.26);
+}
+
+.light {
+  background-color: white;
+  color: black;
+}
+
+.dark {
+  background-color: black;
+  color: white;
 }
