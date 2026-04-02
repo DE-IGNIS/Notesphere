@@ -4,17 +4,17 @@ import useNotes from "../hooks/useNotes.js";
 
 function NotePage() {
   const { id } = useParams();
-  const { fetchNotesById, loading, error } = useNotes();
+  const { fetchNoteById, loading, error } = useNotes();
 
   const [note, setNote] = useState(null);
 
   useEffect(() => {
     async function loadNote() {
-      const data = await fetchNotesById(id);
+      const data = await fetchNoteById(id);
       setNote(data);
     }
     loadNote();
-  }, [id, fetchNotesById]);
+  }, [id]);
 
   if (loading) {
     return <p>Loading note...</p>;
