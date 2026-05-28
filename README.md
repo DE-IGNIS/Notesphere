@@ -1,6 +1,6 @@
 # 📝 NoteSphere
 
-**NoteSphere** is a lightweight, distraction-free note-taking app inspired by Notion, built for simplicity and speed. It focuses on capturing, organizing, and storing notes efficiently without unnecessary complexity.
+**NoteSphere** is a lightweight, distraction free note-taking app inspired by Notion, built for simplicity and speed. It focuses on capturing, organizing, and storing notes efficiently without unnecessary complexity.
 
 ---
 
