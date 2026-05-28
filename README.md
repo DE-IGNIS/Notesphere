@@ -1,16 +1,64 @@
-# React + Vite
+# 📝 NoteSphere
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**NoteSphere** is a lightweight, distraction-free note-taking app inspired by Notion, built for simplicity and speed. It focuses on capturing, organizing, and storing notes efficiently without unnecessary complexity.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+* ✍️ Create, edit, and delete notes
+* 🏷️ Tagging system
+* 🔎 Search functionality
+* 📝 Markdown support
+* ☁️ Cloud sync
+* 🎨 Customizable layouts and themes
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **Frontend:** React
+* **Styling:** Tailwind CSS
+* **Backend & Database:** Supabase
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/NoteSphere.git
+cd NoteSphere
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Setup Supabase
+
+* Create a project on Supabase
+* Get your **Project URL** and **Anon Key**
+* Create a `.env` file in the root:
+
+```
+VITE_SUPABASE_URL=your_project_url
+VITE_SUPABASE_ANON_KEY=your_anon_key
+```
+
+### 4. Run the development server
+
+```bash
+npm run dev
+```
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file
+
+---
